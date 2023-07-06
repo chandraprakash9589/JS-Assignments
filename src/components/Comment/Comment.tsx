@@ -1,6 +1,9 @@
-import React, { Component } from 'react';
-import axios from 'axios';
-import { Link } from 'react-router-dom';
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import { RootState } from "../../Redux/reducers/rootReducer";
+import { fetchComments } from "../../Redux/actions/actions";
+import { Link } from "react-router-dom";
+
 interface Comment {
   id: number;
   postId: number;
@@ -9,37 +12,20 @@ interface Comment {
   body: string;
 }
 
-interface CommentsState {
+interface CommentsProps {
+  postId: number;
+  fetchComments: (postId: number) => void;
   comments: Comment[];
 }
 
-interface CommentsProps {
-  postId:number;
-}
-
-class Comments extends Component<CommentsProps, CommentsState> {
-  state: CommentsState = {
-    comments: [],
-  };
-
+class Comments extends Component<CommentsProps> {
   componentDidMount() {
-    const { postId } = this.props;
-    this.fetchComments(postId);
+    const { postId, fetchComments } = this.props;
+    fetchComments(postId);
   }
 
-  fetchComments = (postId: number) => {
-    axios
-      .get(`https://jsonplaceholder.typicode.com/posts/${postId}/comments`)
-      .then((response) => {
-        this.setState({ comments: response.data });
-      })
-      .catch((error) => {
-        console.error('Error fetching comments:', error);
-      });
-  };
-
   render() {
-    const { comments } = this.state;
+    const { comments } = this.props;
 
     return (
       <div>
@@ -65,11 +51,15 @@ class Comments extends Component<CommentsProps, CommentsState> {
           </tbody>
         </table>
         <Link to={`/`} className="btn btn-primary btn-sm">
-                   Back Home
-                  </Link>
+          Back Home
+        </Link>
       </div>
     );
   }
 }
 
-export default Comments;
+const mapStateToProps = (state: RootState) => ({
+  comments: state.comment.comments, // Update the property access to match your actual reducer name
+});
+
+export default connect(mapStateToProps, { fetchComments })(Comments);

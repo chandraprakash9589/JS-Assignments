@@ -1,7 +1,7 @@
 import React, { Component, SyntheticEvent } from 'react';
 
 interface User {
-  id: number;
+  id: any;
   name: string;
   phone: string;
   email: string;
@@ -37,7 +37,7 @@ class AddUserModal extends Component<AddUserModalProps, AddUserModalState> {
     event.preventDefault();
     const { name, phone, email, username } = this.state;
     if (name && phone && email && username) {
-      const newUser: User = { id: 0, name, phone, email, username };
+      const newUser: User = { id: '', name, phone, email, username };
       this.props.onAddUser(newUser);
       this.setState({ name: '', phone: '', email: '', username: '' });
     }
