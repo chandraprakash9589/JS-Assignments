@@ -1,0 +1,69 @@
+{
+  "users": [
+    {
+      "id": 2,
+      "name": "Jane Smith",
+      "phone": "9876543210",
+      "email": "jane@example.com",
+      "username": "janesmith"
+    },
+    {
+      "id": 3,
+      "name": "chandraprakash",
+      "phone": "986785675",
+      "email": "0173ec191005@gmail.com",
+      "username": "wow"
+    },
+    {
+      "id": 4,
+      "name": "chandraprakash",
+      "phone": "986785675",
+      "email": "rohit@gmail.com",
+      "username": "rohit"
+    },
+    {
+      "id": 5,
+      "name": "chandraprakash",
+      "phone": "986785675",
+      "email": "0173ec191005@gmail.com",
+      "username": "Brajesh"
+    }
+  ],
+  "todos": [
+    {
+      "id": 3,
+      "userId": 2,
+      "title": "Complete task 3",
+      "completed": false
+    }
+  ],
+  "posts": [
+    {
+      "id": 3,
+      "userId": 2,
+      "title": "Post 3",
+      "body": "This is the third post"
+      
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "postId": 1,
+      "name": "Comment 1",
+      "body": "This is the first comment"
+    },
+    {
+      "id": 2,
+      "postId": 1,
+      "name": "Comment 2",
+      "body": "This is the second comment"
+    },
+    {
+      "id": 3,
+      "postId": 2,
+      "name": "Comment 3",
+      "body": "This is the third comment"
+    }
+  ]
+}
